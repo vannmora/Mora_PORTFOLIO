@@ -1,67 +1,80 @@
-import avatar from "../assets/avatar.png";
+import { useEffect, useState } from "react";
 
 function Hero() {
+  const fullName = "Hi, I'm Van Gonzales Mora";
+  const role = "Aspiring Full Stack Developer";
+
+  const [nameText, setNameText] = useState("");
+  const [roleText, setRoleText] = useState("");
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    let nameIndex = 0;
+
+    const nameInterval = setInterval(() => {
+      nameIndex++;
+      setNameText(fullName.slice(0, nameIndex));
+
+      if (nameIndex === fullName.length) {
+        clearInterval(nameInterval);
+        setTimeout(() => setStep(1), 500);
+      }
+    }, 50);
+
+    return () => clearInterval(nameInterval);
+  }, []);
+
+  useEffect(() => {
+    if (step !== 1) return;
+
+    let roleIndex = 0;
+
+    const roleInterval = setInterval(() => {
+      roleIndex++;
+      setRoleText(role.slice(0, roleIndex));
+
+      if (roleIndex === role.length) {
+        clearInterval(roleInterval);
+        setTimeout(() => setStep(2), 500);
+      }
+    }, 50);
+
+    return () => clearInterval(roleInterval);
+  }, [step]);
+
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-950 via-gray-900 to-black text-white overflow-hidden scroll-mt-24"
-    >
-      {/* Background Glow */}
-      <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl top-20 left-10"></div>
-      <div className="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl bottom-20 right-10"></div>
+    <section className="min-h-screen flex items-center justify-center bg-gray-950 text-white px-6">
+      <div className="text-center max-w-4xl">
 
-      <div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        {/* Name */}
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+          {nameText}
+          <span className="animate-pulse text-blue-400">|</span>
+        </h1>
 
-        {/* Left Side */}
-        <div>
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-            Hi, I'm Van Gonzales{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Mora
-            </span>{" "}
-            👋
-          </h1>
-
-          <h2 className="text-2xl md:text-3xl text-gray-400 mb-6">
-            Aspiring Full Stack Developer
+        {/* Role */}
+        {step >= 1 && (
+          <h2 className="text-xl md:text-2xl text-gray-400 mt-4">
+            {roleText}
           </h2>
+        )}
 
-          <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl">
-            I build modern web and mobile applications using React,
-            Flutter, and backend technologies like Node.js and Django.
-            Passionate about learning new technologies and growing in
-            different IT fields.
-          </p>
-
-          <div className="flex gap-4">
+        {/* Button */}
+        {step === 2 && (
+          <div className="mt-12">
             <a
-              href="#projects"
-              className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 transition font-medium"
+              href="/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 rounded-xl 
+                         bg-gray-900 border border-gray-800 
+                         hover:border-blue-400/50 
+                         transition-all duration-300"
             >
-              View Projects
-            </a>
-
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-lg border border-gray-600 hover:border-white transition"
-            >
-              Contact Me
+              View Resume
             </a>
           </div>
-        </div>
-
-        {/* Right Side - Avatar */}
-        <div className="flex justify-center">
-          <div className="relative group">
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
-
-            <img
-              src={avatar}
-              alt="Mora Pixel Avatar"
-              className="relative w-72 md:w-96 rounded-2xl shadow-2xl border border-gray-800"
-            />
-          </div>
-        </div>
+        )}
 
       </div>
     </section>

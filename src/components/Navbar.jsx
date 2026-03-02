@@ -1,39 +1,27 @@
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gray-950/80 backdrop-blur-md border-b border-gray-800 text-white z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white border-b border-gray-800 z-50">
+      
+      <div className="w-full px-10 py-4 flex items-center justify-between">
 
-        {/* Logo */}
-        <a
-          href="#hero"
-          className="text-2xl font-bold tracking-wide hover:text-blue-400 transition"
-        >
-          Mora.dev
-        </a>
+        {/* LEFT - NAME */}
+        <h1 className="text-xl font-semibold tracking-tight">
+          Van Gonzales <span className="text-blue-500">Mora</span>
+        </h1>
 
-        {/* Navigation */}
-        <ul className="hidden md:flex gap-10 text-gray-300 font-medium">
-
-          {[
-            { name: "About", link: "#about" },
-            { name: "Experience", link: "#experience" },
-            { name: "Skills", link: "#skills" },
-            { name: "Projects", link: "#projects" },
-            { name: "Contact", link: "#contact" },
-          ].map((item) => (
-            <li key={item.name} className="relative group">
+        {/* RIGHT - LINKS */}
+        <ul className="flex items-center gap-8 text-sm font-medium text-gray-300">
+          {["About", "Experience", "Skills", "Projects", "Certificates", "Contact"].map((item) => (
+            <li key={item}>
               <a
-                href={item.link}
-                className="hover:text-white transition duration-300"
+                href={`#${item.toLowerCase()}`}
+                className="relative group hover:text-white transition duration-300"
               >
-                {item.name}
+                {item}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
-
-              {/* Animated underline */}
-              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
             </li>
           ))}
-
         </ul>
 
       </div>
