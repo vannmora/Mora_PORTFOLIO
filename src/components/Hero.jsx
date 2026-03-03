@@ -32,27 +32,28 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 
-      {/* Base Gradient */}
-      <div className="absolute inset-0 -z-30 
+      {/* Base Gradient Background */}
+      <div
+        className="absolute inset-0 -z-30 
         bg-gradient-to-br 
         from-white via-gray-100 to-gray-200
         dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
-        transition-colors duration-500" 
+        transition-colors duration-500"
       />
 
       {/* Floating Blob 1 */}
       <motion.div
-        className="absolute -top-40 -left-40 w-[500px] h-[500px]
-        bg-blue-500/20 dark:bg-blue-500/10
+        className="absolute top-1/4 left-1/4 w-[450px] h-[450px]
+        bg-blue-500/25 dark:bg-blue-600/15
         rounded-full blur-[150px] -z-20"
         animate={{
-          x: [0, 100, -50, 0],
-          y: [0, 50, -100, 0],
+          x: [0, 80, -40, 0],
+          y: [0, 40, -60, 0],
         }}
         transition={{
-          duration: 25,
+          duration: 22,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -60,15 +61,15 @@ function Hero() {
 
       {/* Floating Blob 2 */}
       <motion.div
-        className="absolute bottom-0 right-0 w-[450px] h-[450px]
-        bg-purple-500/20 dark:bg-purple-500/10
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px]
+        bg-purple-500/25 dark:bg-purple-600/15
         rounded-full blur-[150px] -z-20"
         animate={{
-          x: [0, -120, 60, 0],
-          y: [0, -80, 40, 0],
+          x: [0, -80, 40, 0],
+          y: [0, -40, 60, 0],
         }}
         transition={{
-          duration: 30,
+          duration: 26,
           repeat: Infinity,
           ease: "easeInOut",
         }}
