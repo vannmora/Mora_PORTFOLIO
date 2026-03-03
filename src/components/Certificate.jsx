@@ -19,7 +19,7 @@ function Certificates() {
   return (
     <section
       id="certificates"
-      className="py-28 bg-gray-950 text-white scroll-mt-24"
+      className="py-28 bg-white dark:bg-gray-950 text-black dark:text-white scroll-mt-24 transition-colors duration-500"
     >
       <div className="max-w-6xl mx-auto px-6">
 
@@ -28,7 +28,7 @@ function Certificates() {
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
             Certifications
           </h2>
-          <p className="text-gray-400 mt-4">
+          <p className="text-gray-600 dark:text-gray-400 mt-4">
             Professional certifications and technical achievements.
           </p>
         </div>
@@ -39,7 +39,7 @@ function Certificates() {
           {badges.map((id) => (
             <div
               key={id}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-6 
+              className="bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 
                          hover:border-blue-400/40 
                          transition-all duration-300"
             >

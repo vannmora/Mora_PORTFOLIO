@@ -2,7 +2,7 @@ function About() {
   return (
     <section
       id="about"
-      className="py-24 bg-gray-900 text-white scroll-mt-24"
+      className="py-24 bg-white dark:bg-gray-950 text-black dark:text-white transition-colors duration-500"
     >
       <div className="max-w-5xl mx-auto px-6 text-center">
 
@@ -10,7 +10,7 @@ function About() {
           About Me
         </h2>
 
-        <p className="text-lg text-gray-300 leading-relaxed mb-6">
+        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
           I am an aspiring Full Stack Developer with hands-on experience
           building modern web and mobile applications. My primary focus
           is frontend development using React.js, while also working with
@@ -18,13 +18,13 @@ function About() {
           like MongoDB and PostgreSQL.
         </p>
 
-        <p className="text-lg text-gray-300 leading-relaxed mb-6">
+        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
           I have also developed mobile frontend applications using Flutter,
           contributing to real-world systems such as a university queueing
           platform for National University Manila.
         </p>
 
-        <p className="text-lg text-gray-400 leading-relaxed">
+        <p className="text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
           I enjoy solving real-world problems through technology and
           continuously expanding my knowledge across different IT fields.
           My goal is to grow into a versatile developer capable of building

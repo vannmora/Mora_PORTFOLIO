@@ -2,7 +2,7 @@ function Experience() {
   return (
     <section
       id="experience"
-      className="py-24 bg-gray-900 text-white scroll-mt-24"
+      className="py-24 bg-white dark:bg-gray-950 text-black dark:text-white scroll-mt-24 transition-colors duration-500"
     >
       <div className="max-w-5xl mx-auto px-6">
 
@@ -10,10 +10,10 @@ function Experience() {
           Professional Experience
         </h2>
 
-        <div className="bg-gray-950 p-8 md:p-10 rounded-2xl shadow-lg border border-gray-800 hover:shadow-2xl transition duration-300">
+        <div className="bg-gray-100 dark:bg-gray-900 p-8 md:p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 hover:shadow-2xl transition duration-300">
 
           {/* Date */}
-          <span className="text-sm text-green-400 font-medium">
+          <span className="text-sm text-green-500 dark:text-green-400 font-medium">
             November 2025 – April 2026
           </span>
 
@@ -23,12 +23,12 @@ function Experience() {
           </h3>
 
           {/* Company */}
-          <p className="text-gray-400 mb-6">
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             Healthy Options
           </p>
 
           {/* Responsibilities */}
-          <ul className="list-disc list-inside text-gray-300 space-y-3 leading-relaxed">
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-3 leading-relaxed">
             <li>
               Developed and maintained a Budget Planning System
               using React.js for the frontend.
