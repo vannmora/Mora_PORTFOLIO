@@ -5,7 +5,7 @@ function Navbar({ darkMode, setDarkMode }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -14,47 +14,80 @@ function Navbar({ darkMode, setDarkMode }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+      className={`
+        fixed top-0 left-0 w-full z-50
+        transition-all duration-500
         ${
           scrolled
-            ? "backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 shadow-md border-b border-gray-200 dark:border-gray-800"
+            ? "backdrop-blur-xl bg-white/70 dark:bg-black/60 border-b border-gray-200 dark:border-zinc-800 shadow-sm"
             : "bg-transparent"
-        }`}
+        }
+      `}
     >
-      <div className="w-full px-10 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
 
-        {/* LEFT - NAME */}
-        <h1 className="text-xl font-semibold tracking-tight text-black dark:text-white">
-          Van Gonzales <span className="text-blue-500">Mora</span>
+        {/* LOGO / NAME */}
+        <h1 className="text-xl font-semibold tracking-tight">
+          Van Gonzales{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            Mora
+          </span>
         </h1>
 
-        {/* RIGHT - LINKS + THEME */}
-        <div className="flex items-center gap-8">
+        {/* NAV LINKS + TOGGLE */}
+        <div className="flex items-center gap-10">
 
-          <ul className="flex items-center gap-8 text-sm font-medium text-gray-700 dark:text-gray-300">
-            {["About", "Experience", "Skills", "Projects", "Certificates", "Contact"].map((item) => (
+          <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
+            {[
+              "About",
+              "Experience",
+              "Skills",
+              "Projects",
+              "Certificates",
+              "Contact",
+            ].map((item) => (
               <li key={item}>
                 <a
                   href={`#${item.toLowerCase()}`}
-                  className="relative group hover:text-blue-500 transition duration-300"
+                  className="
+                    relative group
+                    text-gray-600 dark:text-gray-300
+                    hover:text-blue-500
+                    transition-colors duration-300
+                  "
                 >
                   {item}
-                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                  <span
+                    className="
+                      absolute left-0 -bottom-1
+                      h-[2px] w-0
+                      bg-gradient-to-r from-blue-500 to-purple-500
+                      transition-all duration-300
+                      group-hover:w-full
+                    "
+                  />
                 </a>
               </li>
             ))}
           </ul>
 
-          {/* 🌞 Dark / Light Toggle */}
+          {/* DARK MODE TOGGLE */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="relative w-16 h-8 flex items-center rounded-full p-1 transition-colors duration-300 
-                      bg-gray-300 dark:bg-gray-700"
+            className="
+              relative w-14 h-7 flex items-center
+              rounded-full p-1
+              bg-gray-300 dark:bg-zinc-700
+              transition-colors duration-300
+            "
           >
             <div
-              className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform duration-300 
-                          flex items-center justify-center text-xs
-                          ${darkMode ? "translate-x-8" : "translate-x-0"}`}
+              className={`
+                w-5 h-5 rounded-full bg-white shadow-md
+                transform transition-transform duration-300
+                flex items-center justify-center text-xs
+                ${darkMode ? "translate-x-7" : "translate-x-0"}
+              `}
             >
               {darkMode ? "🌙" : "☀"}
             </div>

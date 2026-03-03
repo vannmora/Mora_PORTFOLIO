@@ -5,68 +5,68 @@ function Hero() {
   const fullName = "Hi, I'm Van Gonzales Mora";
   const roles = [
     "System Developer",
-    "Welcome to my Portfolio",
     "Aspiring Full Stack Developer",
+    "Welcome to my Portfolio",
   ];
 
   const [nameText, setNameText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
 
-  // Typing effect
+  // Typing effect (slightly smoother)
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       index++;
       setNameText(fullName.slice(0, index));
       if (index === fullName.length) clearInterval(interval);
-    }, 50);
+    }, 45);
     return () => clearInterval(interval);
   }, []);
 
-  // Role rotation
+  // Role rotation (slower = calmer feel)
   useEffect(() => {
     const roleInterval = setInterval(() => {
       setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 2500);
+    }, 3200);
     return () => clearInterval(roleInterval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
 
-      {/* Base Gradient Background */}
+      {/* Softer Background Gradient */}
       <div
         className="absolute inset-0 -z-30 
         bg-gradient-to-br 
-        from-white via-gray-100 to-gray-200
-        dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
+        from-white via-gray-50 to-gray-100
+        dark:from-black dark:via-zinc-900 dark:to-black
         transition-colors duration-500"
       />
 
-      {/* Floating Blob 1 */}
+      {/* Softer Blob 1 */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-[450px] h-[450px]
-        bg-blue-500/25 dark:bg-blue-600/15
-        rounded-full blur-[150px] -z-20"
+        className="absolute top-1/4 left-1/4 w-[420px] h-[420px]
+        bg-blue-500/15 dark:bg-blue-500/10
+        rounded-full blur-[160px] -z-20"
         animate={{
-          x: [0, 80, -40, 0],
-          y: [0, 40, -60, 0],
+          x: [0, 60, -40, 0],
+          y: [0, 40, -40, 0],
         }}
         transition={{
-          duration: 22,
+          duration: 24,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* Floating Blob 2 */}
+      {/* Softer Blob 2 */}
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px]
-        bg-purple-500/25 dark:bg-purple-600/15
-        rounded-full blur-[150px] -z-20"
+        className="absolute bottom-1/4 right-1/4 w-[380px] h-[380px]
+        bg-purple-500/15 dark:bg-purple-500/10
+        rounded-full blur-[160px] -z-20"
         animate={{
-          x: [0, -80, 40, 0],
-          y: [0, -40, 60, 0],
+          x: [0, -60, 40, 0],
+          y: [0, -40, 40, 0],
         }}
         transition={{
           duration: 26,
@@ -77,30 +77,36 @@ function Hero() {
 
       {/* Content */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 text-center max-w-4xl px-6"
+        transition={{ duration: 0.7 }}
+        className="relative z-10 text-center max-w-3xl px-6"
       >
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black dark:text-white">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white leading-tight">
           {nameText}
-          <span className="animate-pulse text-blue-500">|</span>
+          <span className="ml-1 text-blue-500 animate-pulse">|</span>
         </h1>
 
         <motion.h2
           key={roleIndex}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mt-4"
+          transition={{ duration: 0.4 }}
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mt-4"
         >
           {roles[roleIndex]}
         </motion.h2>
 
-        <div className="mt-10 flex justify-center gap-6 flex-wrap">
+        {/* Slightly refined buttons */}
+        <div className="mt-12 flex justify-center gap-6 flex-wrap">
+
           <a
             href="#projects"
-            className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition font-medium shadow-lg"
+            className="px-7 py-3 rounded-lg 
+            bg-gray-900 dark:bg-white 
+            text-white dark:text-black 
+            hover:opacity-80 
+            transition duration-300 font-medium"
           >
             View Projects
           </a>
@@ -109,10 +115,14 @@ function Hero() {
             href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 rounded-xl border border-gray-400 dark:border-gray-600 hover:border-blue-400 transition font-medium"
+            className="px-7 py-3 rounded-lg 
+            border border-gray-300 dark:border-zinc-700 
+            hover:border-gray-900 dark:hover:border-white
+            transition duration-300 font-medium"
           >
             View Resume
           </a>
+
         </div>
       </motion.div>
     </section>
