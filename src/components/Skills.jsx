@@ -2,7 +2,7 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 bg-white dark:bg-gray-950 text-black dark:text-white transition-colors duration-500"
+      className="relative py-28"
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
 

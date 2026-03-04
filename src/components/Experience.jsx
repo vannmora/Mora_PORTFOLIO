@@ -2,7 +2,7 @@ function Experience() {
   return (
     <section
       id="experience"
-      className="py-24 bg-white dark:bg-gray-950 text-black dark:text-white scroll-mt-24 transition-colors duration-500"
+      className="relative py-28"
     >
       <div className="max-w-5xl mx-auto px-6">
 

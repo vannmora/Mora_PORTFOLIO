@@ -19,7 +19,7 @@ function Certificates() {
   return (
     <section
       id="certificates"
-      className="py-28 bg-white dark:bg-gray-950 text-black dark:text-white scroll-mt-24 transition-colors duration-500"
+      className="relative py-28"
     >
       <div className="max-w-6xl mx-auto px-6">
 

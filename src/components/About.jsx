@@ -4,13 +4,13 @@ function About() {
   return (
     <section
       id="about"
-      className="py-24 bg-white dark:bg-gray-950 text-black dark:text-white transition-colors duration-500"
+      className="relative py-28"
     >
       <Reveal>
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-4xl md:text-5xl font-bold mb-10">
-            About Me
+            About 
           </h2>
 
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
