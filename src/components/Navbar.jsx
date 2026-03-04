@@ -2,15 +2,37 @@ import { useEffect, useState } from "react";
 
 function Navbar({ darkMode, setDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
+
+      const sections = document.querySelectorAll("section");
+      sections.forEach((section) => {
+        const top = window.scrollY;
+        const offset = section.offsetTop - 120;
+        const height = section.offsetHeight;
+        const id = section.getAttribute("id");
+
+        if (top >= offset && top < offset + height) {
+          setActive(id);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navItems = [
+    "About",
+    "Experience",
+    "Skills",
+    "Projects",
+    "Certificates",
+    "Contact",
+  ];
 
   return (
     <nav
@@ -19,56 +41,59 @@ function Navbar({ darkMode, setDarkMode }) {
         transition-all duration-500
         ${
           scrolled
-            ? "backdrop-blur-xl bg-white/70 dark:bg-black/60 border-b border-gray-200 dark:border-zinc-800 shadow-sm"
+            ? "backdrop-blur-2xl bg-white/60 dark:bg-black/50 border-b border-white/20 dark:border-white/10 shadow-lg"
             : "bg-transparent"
         }
       `}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
 
-        {/* LOGO / NAME */}
+        {/* LOGO */}
         <h1 className="text-xl font-semibold tracking-tight">
           Van Gonzales{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          <span className="text-gray-900 dark:text-white">
             Mora
           </span>
         </h1>
 
-        {/* NAV LINKS + TOGGLE */}
+        {/* NAV LINKS */}
         <div className="flex items-center gap-10">
 
           <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
-            {[
-              "About",
-              "Experience",
-              "Skills",
-              "Projects",
-              "Certificates",
-              "Contact",
-            ].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="
-                    relative group
-                    text-gray-600 dark:text-gray-300
-                    hover:text-blue-500
-                    transition-colors duration-300
-                  "
-                >
-                  {item}
-                  <span
-                    className="
-                      absolute left-0 -bottom-1
-                      h-[2px] w-0
-                      bg-gradient-to-r from-blue-500 to-purple-500
-                      transition-all duration-300
-                      group-hover:w-full
-                    "
-                  />
-                </a>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const id = item.toLowerCase();
+              const isActive = active === id;
+
+              return (
+                <li key={item}>
+                  <a
+                    href={`#${id}`}
+                    className={`
+                      relative px-1 py-2 transition-colors duration-300
+                      ${
+                        isActive
+                          ? "text-black dark:text-white"
+                          : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                      }
+                    `}
+                  >
+                    {item}
+
+                    {/* Animated Underline */}
+                    <span
+                      className={`
+                        absolute left-0 bottom-0 h-[2px] transition-all duration-300
+                        ${
+                          isActive
+                            ? "w-full bg-black dark:bg-white"
+                            : "w-0 bg-black dark:bg-white group-hover:w-full"
+                        }
+                      `}
+                    />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           {/* DARK MODE TOGGLE */}
@@ -77,7 +102,7 @@ function Navbar({ darkMode, setDarkMode }) {
             className="
               relative w-14 h-7 flex items-center
               rounded-full p-1
-              bg-gray-300 dark:bg-zinc-700
+              bg-gray-200 dark:bg-zinc-700
               transition-colors duration-300
             "
           >

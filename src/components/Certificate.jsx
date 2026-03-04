@@ -29,7 +29,7 @@ function Certificates() {
             Certifications
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-4">
-            Professional certifications and technical achievements.
+            
           </p>
         </div>
 

@@ -9,69 +9,115 @@ function Projects() {
     {
       id: 1,
       category: "Thesis Project",
-      categoryColor: "text-blue-500",
       title: "NUQX – NU Queueing System",
       description:
-        "A digital queue management system developed for National University Manila. I contributed as a Frontend Developer for both the Flutter mobile application and the MERN-based web platform.",
+        "A Queueing management system developed for National University Manila..",
       tech: ["Flutter", "React.js", "Node.js", "Express.js", "MongoDB"],
       image: nuqxImage,
       note: "Internal University System",
     },
   ];
 
-  // Close modal on ESC key
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        setSelectedProject(null);
-      }
+      if (e.key === "Escape") setSelectedProject(null);
     };
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
   return (
-    <section
-      id="projects"
-      className="relative py-28"
-    >
+    <section id="projects" className="relative py-32">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-14">
+
+        <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">
+          Portfolio
+        </p>
+
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-16">
           Development Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-12">
           {projects.map((project) => (
             <motion.div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-gray-100 dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 text-left cursor-pointer transition"
+              whileHover={{ y: -10 }}
+              className="group relative cursor-pointer"
             >
-              <span className={`text-sm font-medium ${project.categoryColor}`}>
-                {project.category}
-              </span>
+              {/* CARD */}
+              <div className="
+                bg-white/40 dark:bg-white/5
+                backdrop-blur-xl
+                border border-white/20 dark:border-white/10
+                rounded-3xl
+                overflow-hidden
+                transition-all duration-300
+                hover:shadow-2xl
+              ">
 
-              <h3 className="text-2xl font-semibold mt-3 mb-4">
-                {project.title}
-              </h3>
+                {/* IMAGE */}
+                <div className="relative h-60 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                  />
 
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                {project.description}
-              </p>
+                  {/* Image Overlay */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500" />
 
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-                Tech Stack: {project.tech.join(", ")}
-              </p>
+                  <span className="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-black/60 text-white backdrop-blur-md">
+                    {project.category}
+                  </span>
+                </div>
 
-              <div className="flex gap-4">
-                <span className="text-gray-500 dark:text-gray-400 text-sm">
-                  {project.note}
-                </span>
+                {/* CONTENT */}
+                <div className="p-8 text-left">
+
+                  <h3 className="text-2xl font-semibold mb-4">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* TECH STACK */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="
+                          px-3 py-1
+                          text-xs
+                          rounded-full
+                          bg-black/5 dark:bg-white/10
+                          border border-black/10 dark:border-white/10
+                        "
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* VIEW DETAILS */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-400">
+                      {project.note}
+                    </span>
+
+                    <span className="text-sm font-medium text-black dark:text-white group-hover:translate-x-2 transition duration-300">
+                      View Details →
+                    </span>
+                  </div>
+
+                </div>
               </div>
             </motion.div>
           ))}
@@ -81,44 +127,56 @@ function Projects() {
       {/* MODAL */}
       {selectedProject && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50"
           onClick={() => setSelectedProject(null)}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-gray-900 p-8 rounded-3xl w-11/12 md:w-2/3 max-w-3xl relative shadow-2xl border border-gray-200 dark:border-gray-700 transition"
+            className="
+              bg-white/90 dark:bg-zinc-900/90
+              backdrop-blur-xl
+              p-10
+              rounded-3xl
+              w-11/12 md:w-2/3
+              max-w-4xl
+              relative
+              shadow-2xl
+              border border-white/20 dark:border-white/10
+            "
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-6 text-2xl text-gray-500 dark:text-gray-300 hover:text-red-500 transition"
+              className="absolute top-6 right-8 text-xl text-gray-400 hover:text-red-500 transition"
             >
               ✕
             </button>
 
-            <div className="overflow-hidden rounded-2xl mb-8 shadow-lg">
+            <div className="overflow-hidden rounded-2xl mb-10 shadow-lg">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-72 object-cover hover:scale-105 transition duration-500"
+                className="w-full h-80 object-cover"
               />
             </div>
 
-            <h3 className="text-3xl font-bold mb-6 tracking-wide">
+            <h3 className="text-3xl font-semibold mb-8">
               {selectedProject.title}
             </h3>
-
-            <h4 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
-              Tech Stack Used
-            </h4>
 
             <div className="flex flex-wrap gap-3">
               {selectedProject.tech.map((tech, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition rounded-full text-sm font-medium shadow-md"
+                  className="
+                    px-4 py-2
+                    rounded-full
+                    text-sm
+                    bg-black/5 dark:bg-white/10
+                    border border-black/10 dark:border-white/10
+                  "
                 >
                   {tech}
                 </span>
