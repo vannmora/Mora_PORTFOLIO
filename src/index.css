@@ -13,9 +13,6 @@ html, body, #root {
 body {
   @apply bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-500;
 }
-body {
-  cursor: none;
-}
 /* ---------- DESIGN SYSTEM ---------- */
 
 @layer components {

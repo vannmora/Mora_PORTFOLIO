@@ -8,7 +8,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
 import Certificates from "./components/Certificate";
-import AnimatedCursor from "react-animated-cursor";
+
 
 function App() {
 const [darkMode, setDarkMode] = useState(true);
@@ -19,24 +19,7 @@ document.documentElement.classList.toggle("dark", darkMode);
 
 return ( <div className="relative min-h-screen text-gray-900 dark:text-white transition-colors duration-500">
 
-```
-  {/* Custom Cursor */}
-  <AnimatedCursor
-    innerSize={8}
-    outerSize={35}
-    color="0, 200, 255"
-    outerAlpha={0.2}
-    innerScale={0.7}
-    outerScale={2}
-    clickables={[
-      "a",
-      "button",
-      ".link",
-      "input",
-      "textarea",
-      ".cursor-pointer"
-    ]}
-  />
+
 
   {/* 🌌 GLOBAL FLOATING BACKGROUND */}
   <GlobalBackground />
