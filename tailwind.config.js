@@ -29,6 +29,13 @@ export default {
         floatMedium: {
           "0%, 100%": { transform: "translate(-50%, 0px)" },
           "50%": { transform: "translate(-50%, 80px)" },
+          theme: {
+  extend: {
+    animation: {
+      "spin-slow": "spin 18s linear infinite",
+    },
+  },
+}
         },
       },
     },
