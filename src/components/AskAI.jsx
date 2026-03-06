@@ -28,7 +28,7 @@ function AskAI() {
     try {
 
       const res = await axios.post(
-        "/api/ask",
+        "https://vanmora.onrender.com/ask",
         { message: text }
       );
 
