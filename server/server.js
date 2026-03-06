@@ -17,7 +17,7 @@ const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY
 });
 
-app.post("/ask", async (req, res) => {
+app.post("/api/ask", async (req, res) => {
 
   try {
 
