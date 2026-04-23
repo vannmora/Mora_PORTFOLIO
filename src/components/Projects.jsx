@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import nuqxImage from "../assets/project1.png";
+import project2Image from "../assets/project 2.png"; // ✅ ADD THIS
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -11,10 +12,21 @@ function Projects() {
       category: "Thesis Project",
       title: "NUQX – NU Queueing System",
       description:
-        "A Queueing management system developed for National University Manila..",
+        "A Queueing management system developed for National University Manila.",
       tech: ["Flutter", "React.js", "Node.js", "Express.js", "MongoDB"],
       image: nuqxImage,
       note: "Internal University System",
+    },
+
+    {
+      id: 2,
+      category: "Internship Project",
+      title: "Healthy Options – Budget Planning System",
+      description:
+        "A budget planning system for Healthy Options to manage, track, and report financial data.",
+      tech: ["React.js", "Django", "PostgreSQL", "API"],
+      image: project2Image, // ✅ FIXED
+      note: "Company Internal System", // ✅ comma fixed
     },
   ];
 
@@ -29,7 +41,6 @@ function Projects() {
   return (
     <section id="projects" className="relative py-32">
       <div className="max-w-6xl mx-auto px-6 text-center">
-
         <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">
           Portfolio
         </p>
@@ -38,7 +49,7 @@ function Projects() {
           Development Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 items-stretch">
           {projects.map((project) => (
             <motion.div
               key={project.id}
@@ -48,9 +59,8 @@ function Projects() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="group relative cursor-pointer"
+              className="group relative cursor-pointer h-full"
             >
-              {/* CARD */}
               <div className="
                 bg-white/40 dark:bg-white/5
                 backdrop-blur-xl
@@ -59,9 +69,9 @@ function Projects() {
                 overflow-hidden
                 transition-all duration-300
                 hover:shadow-2xl
+                h-full flex flex-col
               ">
 
-                {/* IMAGE */}
                 <div className="relative h-60 overflow-hidden">
                   <img
                     src={project.image}
@@ -69,7 +79,6 @@ function Projects() {
                     className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                   />
 
-                  {/* Image Overlay */}
                   <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500" />
 
                   <span className="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-black/60 text-white backdrop-blur-md">
@@ -77,9 +86,7 @@ function Projects() {
                   </span>
                 </div>
 
-                {/* CONTENT */}
-                <div className="p-8 text-left">
-
+                <div className="p-8 text-left flex-1 flex flex-col flex-grow">
                   <h3 className="text-2xl font-semibold mb-4">
                     {project.title}
                   </h3>
@@ -88,7 +95,6 @@ function Projects() {
                     {project.description}
                   </p>
 
-                  {/* TECH STACK */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, index) => (
                       <span
@@ -106,7 +112,6 @@ function Projects() {
                     ))}
                   </div>
 
-                  {/* VIEW DETAILS */}
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-400">
                       {project.note}
@@ -116,7 +121,6 @@ function Projects() {
                       View Details →
                     </span>
                   </div>
-
                 </div>
               </div>
             </motion.div>
@@ -124,7 +128,6 @@ function Projects() {
         </div>
       </div>
 
-      {/* MODAL */}
       {selectedProject && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50"

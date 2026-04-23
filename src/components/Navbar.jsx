@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import mask from "../assets/mask.png";
-import avatar from "../assets/van_avatar.png";
 import { motion } from "framer-motion";
 
 function Navbar({ darkMode, setDarkMode }) {
@@ -51,46 +49,9 @@ function Navbar({ darkMode, setDarkMode }) {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
 
-        {/* LOGO */}
-        <div className="flex items-center gap-3 text-xl font-semibold tracking-tight">
-
-          <div className="relative w-9 h-9 overflow-hidden rounded-full">
-
-            {/* Avatar (hidden first) */}
-            <motion.img
-              src={avatar}
-              alt="avatar"
-              className="absolute inset-0 w-full h-full object-cover"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{
-                opacity: scrolled ? 1 : 0,
-                scale: scrolled ? 1 : 0.9
-              }}
-              transition={{
-                duration: 0.4,
-                delay: 0.2
-              }}
-            />
-
-            {/* Spider-Man Mask */}
-            <motion.img
-              src={mask}
-              alt="mask"
-              className="absolute inset-0 w-full h-full object-cover scale-[1.35]"
-              initial={{ y: 0 }}
-              animate={{
-                y: scrolled ? "-110%" : "0%",
-                opacity: scrolled ? 0 : 1,
-                rotate: scrolled ? -12 : 0
-              }}
-              transition={{
-                duration: 0.7,
-                ease: "easeInOut"
-              }}
-            />
-
-          </div>
-
+        {/* LOGO / NAME */}
+        <div className="text-xl font-semibold tracking-tight">
+          Van Gonzales Mora
         </div>
 
         {/* NAV LINKS */}
