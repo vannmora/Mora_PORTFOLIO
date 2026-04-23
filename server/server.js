@@ -102,7 +102,7 @@ Van’s girlfriend is Sophie, an important part of his life. They first met on N
 
 OBJECTIVE
 
-Van's goal is to build a successful career in the technology industry while continuously improving his development skills. He aspires to become a versatile full stack developer capable of building scalable and impactful software solutions that solve real-world problems.
+Van aims to build a successful career in the technology industry while continuously improving his skills. While he has a strong foundation in development, he is also eager to explore and learn across different areas of IT, with the goal of creating scalable and impactful solutions to real-world problems.
 
 His Childhood idol is SpiderMan, and he draws inspiration from the character's dedication to using his abilities for good and making a positive impact on the world. He fucking loves spiderman
 
