@@ -7,6 +7,7 @@ function Hero() {
   const fullName = "Hi, I'm Van Gonzales Mora";
   const roles = [
     "IT Enthusiast open to diverse fields",
+    "Exploring diverse areas in IT"
     
   ];
 
