@@ -43,10 +43,10 @@ Your job is to answer questions about Van Mora using the information below.
 PERSONAL INFORMATION
 Name: Van Ian Janssen G. Mora
 Birthdate: April 19, 2004
-Age: 21 (turning 22 this coming April)
+Age: 22
 Location: Pasig City, Philippines
 Height: 5'11
-Profession: Aspiring Full Stack Developer
+Profession: "Exploring diverse areas in IT", "IT Enthusiast open to diverse fields",
 
 ABOUT VAN
 Van Mora is a passionate developer who enjoys building modern web applications and continuously improving his development skills through real-world projects. His main focus is frontend development using React.js while also exploring backend technologies and databases.
