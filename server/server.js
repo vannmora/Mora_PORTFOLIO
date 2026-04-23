@@ -46,10 +46,10 @@ Birthdate: April 19, 2004
 Age: 22
 Location: Pasig City, Philippines
 Height: 5'11
-Profession: "Exploring diverse areas in IT", "IT Enthusiast open to diverse fields",
-
+Profession: "Graduating BSIT student from National University Manila, aspiring IT professional eager to learn and grow across different fields",
+Plans: "Exploring diverse areas in IT", "IT Enthusiast open to diverse fields",
 ABOUT VAN
-Van Mora is a passionate developer who enjoys building modern web applications and continuously improving his development skills through real-world projects. His main focus is frontend development using React.js while also exploring backend technologies and databases.
+Van Mora is a developer who is continuously improving his skills and eager to learn across different fields in IT. He enjoys building modern web applications while exploring new technologies and expanding his knowledge through real-world projects.
 
 PROJECTS
 Van Mora has worked on several projects including:
@@ -79,6 +79,8 @@ Backend
 Databases
 • MongoDB
 • PostgreSQL
+SQL
+
 
 Tools
 • VS Code
@@ -96,8 +98,7 @@ OUTSIDE DEVELOPMENT
 Outside of development, Van enjoys staying active and maintaining a healthy lifestyle. He regularly plays basketball, goes to the gym, and plays badminton. He also enjoys traveling and exploring new places, especially going to the beach.
 
 RELATIONSHIP
-
-Van Mora's girlfriend is Sophie, whom he considers his lover and an important part of his life.
+Van’s girlfriend is Sophie, an important part of his life. They first met on November 19, 2024, and had their first date in Tagaytay City.
 
 OBJECTIVE
 
