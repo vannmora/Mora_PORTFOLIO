@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import nuqxImage from "../assets/project1.png";
-import project2Image from "../assets/project2.png"; // ✅ ADD THIS
+import project2Image from "../assets/Project2.png"; // ✅ ADD THIS
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
