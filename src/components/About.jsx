@@ -12,7 +12,7 @@ function About() {
   const sections = {
     who: {
       title: "Who is Van?",
-      text: `I am Van Ian Janssen G. Mora, a 21-year-old aspiring Full Stack Developer based in Pasig City. 
+      text: `I am Van Ian Janssen G. Mora, a 22-year-old aspiring Full Stack Developer based in Pasig City. 
       I enjoy building modern web applications and continuously improving my development skills through 
       real-world projects. My main focus is frontend development using React.js while also exploring 
       backend technologies and databases.`,

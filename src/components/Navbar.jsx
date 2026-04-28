@@ -36,28 +36,34 @@ function Navbar({ darkMode, setDarkMode }) {
   ];
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
       className={`
         fixed top-0 left-0 w-full z-50
         transition-all duration-500
         ${
           scrolled
-            ? "backdrop-blur-2xl bg-white/60 dark:bg-black/50 border-b border-white/20 dark:border-white/10 shadow-lg"
+            ? "backdrop-blur-3xl bg-white/40 dark:bg-black/40 border-b border-white/20 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
             : "bg-transparent"
         }
       `}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+      <div className="w-full px-6 md:px-12 py-4 flex items-center justify-between">
 
-        {/* LOGO / NAME */}
-        <div className="text-xl font-semibold tracking-tight">
+        {/* LOGO */}
+        <a
+          href="#about"
+          className="text-xl font-semibold tracking-tight hover:opacity-70 transition"
+        >
           Van Gonzales Mora
-        </div>
+        </a>
 
         {/* NAV LINKS */}
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-8">
 
-          <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <ul className="hidden md:flex items-center gap-6 text-sm font-medium">
             {navItems.map((item) => {
               const id = item.toLowerCase();
               const isActive = active === id;
@@ -67,7 +73,8 @@ function Navbar({ darkMode, setDarkMode }) {
                   <a
                     href={`#${id}`}
                     className={`
-                      relative px-1 py-2 transition-colors duration-300
+                      group relative px-1 py-2 transition-all duration-300
+                      hover:-translate-y-[1px]
                       ${
                         isActive
                           ? "text-black dark:text-white"
@@ -77,14 +84,14 @@ function Navbar({ darkMode, setDarkMode }) {
                   >
                     {item}
 
-                    {/* Animated Underline */}
+                    {/* UNDERLINE */}
                     <span
                       className={`
                         absolute left-0 bottom-0 h-[2px] transition-all duration-300
                         ${
                           isActive
                             ? "w-full bg-black dark:bg-white"
-                            : "w-0 bg-black dark:bg-white hover:w-full"
+                            : "w-0 bg-black dark:bg-white group-hover:w-full"
                         }
                       `}
                     />
@@ -98,10 +105,9 @@ function Navbar({ darkMode, setDarkMode }) {
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="
-              relative w-14 h-7 flex items-center
-              rounded-full p-1
+              relative w-14 h-7 flex items-center rounded-full p-1
               bg-gray-200 dark:bg-zinc-700
-              transition-colors duration-300
+              shadow-inner transition-all duration-300
             "
           >
             <div
@@ -118,7 +124,7 @@ function Navbar({ darkMode, setDarkMode }) {
 
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
