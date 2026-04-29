@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import nuqxImage from "../assets/project1.png";
-import project2Image from "../assets/Project2.png"; // ✅ ADD THIS
+import project2Image from "../assets/Project2.png";
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -12,21 +12,20 @@ function Projects() {
       category: "Thesis Project",
       title: "NUQX – NU Queueing System",
       description:
-        "A Queueing management system developed for National University Manila.",
+        "Queueing management system for National University Manila.",
       tech: ["Flutter", "React.js", "Node.js", "Express.js", "MongoDB"],
       image: nuqxImage,
       note: "Internal University System",
     },
-
     {
       id: 2,
       category: "Internship Project",
-      title: "Healthy Options – Budget Planning System",
+      title: "Budget Planning System",
       description:
-        "A budget planning system for Healthy Options to manage, track, and report financial data.",
-      tech: ["React.js", "Django", "PostgreSQL", "API"],
-      image: project2Image, // ✅ FIXED
-      note: "Company Internal System", // ✅ comma fixed
+        "Financial tracking and reporting system for Healthy Options.",
+      tech: ["React.js", "Node.js", "PostgreSQL", "API"],
+      image: project2Image,
+      note: "Company Internal System",
     },
   ];
 
@@ -41,150 +40,155 @@ function Projects() {
   return (
     <section id="projects" className="relative py-32">
       <div className="max-w-6xl mx-auto px-6 text-center">
+
         <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">
           Portfolio
         </p>
 
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-16">
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-20">
           Development Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-12 items-stretch">
+        {/* PROJECT GRID */}
+        <div className="grid md:grid-cols-2 gap-12">
+
           {projects.map((project) => (
             <motion.div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group relative cursor-pointer h-full"
+              whileHover={{ scale: 1.02 }}
+              className="cursor-pointer group"
             >
               <div className="
+                relative
                 bg-white/40 dark:bg-white/5
-                backdrop-blur-xl
+                backdrop-blur-2xl
                 border border-white/20 dark:border-white/10
                 rounded-3xl
                 overflow-hidden
+                shadow-[0_20px_60px_rgba(0,0,0,0.15)]
                 transition-all duration-300
-                hover:shadow-2xl
-                h-full flex flex-col
               ">
 
+                {/* GLOW */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full" />
+
+                {/* IMAGE */}
                 <div className="relative h-60 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                   />
-
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-                  <span className="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-black/60 text-white backdrop-blur-md">
-                    {project.category}
-                  </span>
                 </div>
 
-                <div className="p-8 text-left flex-1 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-semibold mb-4">
+                {/* CONTENT */}
+                <div className="p-8 text-left">
+
+                  <span className="text-xs text-blue-500 font-medium">
+                    {project.category}
+                  </span>
+
+                  <h3 className="text-2xl font-semibold mt-2 mb-4">
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">
                     {project.description}
                   </p>
 
+                  {/* TECH */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, index) => (
+                    {project.tech.map((tech, i) => (
                       <span
-                        key={index}
-                        className="
-                          px-3 py-1
-                          text-xs
-                          rounded-full
-                          bg-black/5 dark:bg-white/10
-                          border border-black/10 dark:border-white/10
-                        "
+                        key={i}
+                        className="text-xs px-3 py-1 rounded-full border border-white/20"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-400">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-400">
                       {project.note}
                     </span>
 
-                    <span className="text-sm font-medium text-black dark:text-white group-hover:translate-x-2 transition duration-300">
-                      View Details →
+                    <span className="text-sm font-medium group-hover:translate-x-2 transition">
+                      Inspect →
                     </span>
                   </div>
+
                 </div>
               </div>
             </motion.div>
           ))}
+
         </div>
       </div>
 
+      {/* MODAL */}
       {selectedProject && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/70 backdrop-blur-lg flex items-center justify-center z-50"
           onClick={() => setSelectedProject(null)}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, scale: 0.9, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             className="
-              bg-white/90 dark:bg-zinc-900/90
-              backdrop-blur-xl
-              p-10
-              rounded-3xl
-              w-11/12 md:w-2/3
-              max-w-4xl
-              relative
+              bg-black text-green-400 font-mono
+              p-8 rounded-2xl
+              w-11/12 md:w-2/3 max-w-4xl
+              border border-green-500/20
               shadow-2xl
-              border border-white/20 dark:border-white/10
             "
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-8 text-xl text-gray-400 hover:text-red-500 transition"
-            >
-              ✕
-            </button>
 
-            <div className="overflow-hidden rounded-2xl mb-10 shadow-lg">
+            {/* TERMINAL HEADER */}
+            <div className="flex gap-2 mb-6">
+              <div className="w-3 h-3 bg-red-500 rounded-full" />
+              <div className="w-3 h-3 bg-yellow-500 rounded-full" />
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
+              <span className="ml-4 text-gray-400">
+                project@system:~/{selectedProject.title}
+              </span>
+            </div>
+
+            {/* COMMAND */}
+            <p className="mb-4">
+              <span className="text-blue-400">$</span> inspect project
+            </p>
+
+            {/* OUTPUT */}
+            <div className="space-y-3 text-sm text-gray-300">
+
+              <p>→ {selectedProject.title}</p>
+              <p>→ {selectedProject.note}</p>
+
+              <div className="flex flex-wrap gap-2 mt-4">
+                {selectedProject.tech.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 border border-green-400/30 rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+            </div>
+
+            {/* IMAGE */}
+            <div className="mt-6 rounded-lg overflow-hidden">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-80 object-cover"
+                className="w-full h-72 object-cover"
               />
             </div>
 
-            <h3 className="text-3xl font-semibold mb-8">
-              {selectedProject.title}
-            </h3>
-
-            <div className="flex flex-wrap gap-3">
-              {selectedProject.tech.map((tech, index) => (
-                <span
-                  key={index}
-                  className="
-                    px-4 py-2
-                    rounded-full
-                    text-sm
-                    bg-black/5 dark:bg-white/10
-                    border border-black/10 dark:border-white/10
-                  "
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
           </motion.div>
         </div>
       )}

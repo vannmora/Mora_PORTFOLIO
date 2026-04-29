@@ -18,74 +18,93 @@ function About() {
       backend technologies and databases.`,
     },
     outside: {
-      title: "Van Outside Development",
-      text: `Outside of development, I enjoy staying active and maintaining a healthy lifestyle. 
-      I regularly play basketball, go to the gym, and play badminton. I also enjoy traveling and 
-      exploring new places, especially going to the beach. These activities keep me balanced, 
-      motivated, and energized.`,
+      title: "Outside Development",
+      text: `Outside of development, I stay active through basketball, gym sessions, and badminton. 
+      I also enjoy traveling and exploring new places, especially beaches. These experiences keep me 
+      balanced, motivated, and inspired.`,
     },
     goals: {
       title: "My Objectives",
-      text: `My goal is to build a successful career in the technology industry while continuously 
-      improving my development skills. I aspire to grow into a versatile full stack developer capable 
-      of building scalable and impactful software solutions that solve real-world problems.`,
+      text: `My goal is to grow into a versatile full stack developer capable of building scalable 
+      and impactful systems. I aim to continuously expand my knowledge beyond development and explore 
+      other areas in the IT field.`,
     },
   };
 
   return (
-    <section id="about" className="relative py-28">
+    <section id="about" className="relative py-32 overflow-hidden">
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">
+          {/* TITLE */}
+          <h2 className="text-4xl md:text-5xl font-bold mb-20">
             About Me
           </h2>
 
-          {/* Tabs */}
-          <div className="flex justify-center gap-6 mb-12 flex-wrap">
+          {/* TABS (UPGRADED) */}
+          <div className="flex justify-center gap-6 mb-16 flex-wrap">
 
-            {Object.entries(sections).map(([key, value]) => (
-              <motion.button
-                key={key}
-                layout
-                onClick={() => toggle(key)}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className={`rounded-2xl border transition-all duration-300
-                ${
-                  active === key
-                    ? "px-10 py-5 text-lg bg-white text-black dark:bg-white dark:text-black shadow-xl scale-105"
-                    : "px-6 py-3 text-sm border-gray-400/40 dark:border-gray-600 hover:border-blue-400 hover:scale-105"
-                }`}
-              >
-                {value.title}
-              </motion.button>
-            ))}
+            {Object.entries(sections).map(([key, value], index) => {
+              const isActive = active === key;
+
+              return (
+                <motion.button
+                  key={key}
+                  onClick={() => toggle(key)}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`relative rounded-2xl transition-all duration-300
+                  ${
+                    isActive
+                      ? "px-10 py-5 text-lg bg-black text-white dark:bg-white dark:text-black shadow-2xl"
+                      : "px-6 py-3 text-sm border border-gray-400/30 dark:border-gray-600 hover:border-blue-400"
+                  }`}
+                >
+                  {value.title}
+
+                  {/* ACTIVE GLOW */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="tab-glow"
+                      className="absolute inset-0 rounded-2xl bg-blue-500/20 blur-xl -z-10"
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
 
           </div>
 
-          {/* Description Panel */}
-          <AnimatePresence>
+          {/* CONTENT PANEL */}
+          <AnimatePresence mode="wait">
             {active && (
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 20, height: 0 }}
-                animate={{ opacity: 1, y: 0, height: "auto" }}
-                exit={{ opacity: 0, y: -20, height: 0 }}
-                transition={{ duration: 0.35 }}
-                className="overflow-hidden"
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.98 }}
+                transition={{ duration: 0.4 }}
               >
-                <div className="
-                  max-w-4xl mx-auto
-                  bg-white/40 dark:bg-white/5
-                  backdrop-blur-xl
-                  border border-white/20 dark:border-white/10
-                  rounded-3xl
-                  p-12
-                  shadow-2xl
-                  text-left
-                ">
+                <motion.div
+                  whileHover={{ scale: 1.01 }}
+                  className="
+                    relative
+                    max-w-4xl mx-auto
+                    bg-white/40 dark:bg-white/5
+                    backdrop-blur-2xl
+                    border border-white/20 dark:border-white/10
+                    rounded-3xl
+                    p-12
+                    shadow-[0_20px_60px_rgba(0,0,0,0.15)]
+                    text-left
+                    overflow-hidden
+                  "
+                >
 
-                  <h3 className="text-2xl font-semibold mb-4">
+                  {/* BACKGROUND GLOW */}
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/20 blur-3xl rounded-full" />
+
+                  <h3 className="text-2xl font-semibold mb-6">
                     {sections[active].title}
                   </h3>
 
@@ -93,7 +112,7 @@ function About() {
                     {sections[active].text}
                   </p>
 
-                </div>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
