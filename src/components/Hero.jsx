@@ -6,7 +6,6 @@ import { SiTailwindcss, SiJavascript } from "react-icons/si";
 function Hero() {
   const fullName = "Hi, I'm Van Gonzales Mora.";
   const roles = [
-    "Aspiring Full Stack Developer",
     "Exploring AI, Systems, and Emerging Tech",
     "Passionate about Building and Learning",
     "Eager to Contribute and Grow in Tech",
