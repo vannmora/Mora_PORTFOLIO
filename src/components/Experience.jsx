@@ -44,8 +44,7 @@ function Experience() {
           {/* Responsibilities */}
           <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-3 leading-relaxed">
             <li>
-              Developed and maintained a Budget Planning System
-              using React.js for the frontend.
+              Developed a Budget Planning System
             </li>
             <li>
               Built backend features and API endpoints using
