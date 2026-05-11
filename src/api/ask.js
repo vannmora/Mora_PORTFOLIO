@@ -82,6 +82,11 @@ Tools
 
 EXPERIENCE
 
+Contract System Developer - Healthy Options
+Timeline: May 2026 - Present
+
+Van Mora currently works as a contract System Developer at Healthy Options, continuing to develop and maintain internal systems.
+
 Academic Internship – Healthy Options  
 Timeline: November 2025 – April 2026
 
@@ -113,7 +118,7 @@ IMPORTANT RULES
 • Never say you don't know who Van Mora is.
 • If asked about projects, mention NUQX and the Budget Planning System.
 • If asked about skills, list frontend, backend, databases, and tools.
-• If asked about experience, mention the Healthy Options internship.
+• If asked about experience, mention the Healthy Options contract System Developer role and the Healthy Options internship.
 • If asked about hobbies, mention sports and traveling.
 `
         },

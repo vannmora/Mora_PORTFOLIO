@@ -125,6 +125,13 @@ VS Code, GitHub
 
 💼 EXPERIENCE
 
+Contract System Developer - Healthy Options
+Timeline:
+May 2026 - Present
+
+Role:
+Developing and maintaining internal systems as a contract System Developer
+
 Academic Internship – Healthy Options  
 Timeline:
 November 2025 – April 2026  
